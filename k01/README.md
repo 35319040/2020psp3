@@ -80,20 +80,21 @@ right-left>=0になるまで続ける。
 
 ```
 ===== linear search =====
-City ID?42391
-42391, 髟ｷ蟠守恁, 菴舌・伴, 13626, 6426, 7200
+City ID?42307
+42307, 長崎県, 長与町, 42548, 20090, 22458
 
 ===== binary search =====
 City ID?42391
-42391, 髟ｷ蟠守恁, 菴舌・伴, 13626, 6426, 7200
+42391, 長崎県, 佐々町, 13626, 6426, 7200
 
 ===== linear search =====
-City ID?111111
+City ID?11111111111
 city was not found
 
 ===== binary search =====
-City ID?2222222
+City ID?1111111111111
 city was not found
+
 ```
 
 
