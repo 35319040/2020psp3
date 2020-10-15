@@ -1,28 +1,15 @@
 #include <stdio.h>
-#define ARRAY_SIZE 7
+ 
+typedef struct syPerson{
+    char name[21];
+    int birthday;
+    int age;
+}Person;
 
-int main(void)
-{
-    int array[ARRAY_SIZE]={1,2,3,4,5,6,8};
-    int pos;
-    int result;
-    int key=3;
-    int left ,right;
+int main(void){
 
-    result=-1;
+    int your_size=5;
 
-    left=0;
-    right=ARRAY_SIZE-1;
-
-    while(left <= right){
-        pos=left+(right-left)/2;
-
-        if(key==array[pos]){
-            result=pos;
-            break;
-        }else if(key>array[pos]){
-            left=pos+1;
-        }
-    }
-    return 0;
+    printf("your size=%d,actual size=%d\n",your_size,sizeof(Person));
+    
 }
