@@ -69,13 +69,25 @@ typedef struct {
     - return値: IDが合致した配列データのindex。IDが一致するデータがない場合は-1。
 
 ## ソースコードの説明
+（１）新しい要素のデータ領域の確保
+データを代入する
+リストに要素を挿入する
 
+（２）リストの先頭から順番に要素をたどっていく
+IDとcity.idが一致していれるかif文を使って確認する。
 
 
 ## 出力結果
 
 ```
+City ID?42210
+the city was found at 12
+42210, 長崎県, 壱岐市, 27103, 12860, 14243
+free list. items = 21
 
+City ID?12345
+sorry, the city was not found
+free list. items = 21
 ```
 
 ## 修正履歴
