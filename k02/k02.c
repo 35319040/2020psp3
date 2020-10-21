@@ -82,7 +82,7 @@ Node* InsertNewNode(City newCity, Node* pNext)
         pNode->city=newCity;
         pNode->pNext = pNext; 
     
-    return pNode; //  ここを実装す
+    return pNode; //  ここを実装する
 }
 
 #ifdef CHALLENGE1
@@ -105,22 +105,19 @@ int SearchCityByName(Node* pList, char* cityName, City* pCity)
 
 int SearchCityByID(Node* pList, int ID, City* pCity)
 {
-    Node* pNode;
+    
     int count=-1;
 
-    pNode=pList;
     
-    while(pNode != NULL){
-        
-        count=count+1;
+    while(pList != NULL){
 
-        if((pNode->city.id) == ID){
-
-            *pCity=pNode->city;
+        if((pList->city.id) == ID){
+            count=count+1;
+            *pCity=pList->city;
             break;
         }
         
-        pNode=pNode->pNext;
+        pList=pList->pNext;
     }
 
     return count;      
