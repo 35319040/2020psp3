@@ -104,7 +104,8 @@ int SearchCityByName(Node* pList, char* cityName, City* pCity)
                 //  ここを実装する
     while(pList != NULL){
         count=count+1;
-        if((pList->city.name) == cityName){
+        
+        if(strcmp(pList->city.name,cityName)==0){
             *pCity=pList->city;
             break;
         }
