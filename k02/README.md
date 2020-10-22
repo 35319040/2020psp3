@@ -76,6 +76,10 @@ typedef struct {
 （２）リストの先頭から順番に要素をたどっていく
 IDとcity.idが一致していれるかif文を使って確認する。
 
+チャレンジ問題
+（２）リストの先頭から順番に要素をたどっていく
+citynameとcity.Nameが一致していれるかif文を使って確認する。
+
 
 ## 出力結果
 
@@ -89,6 +93,10 @@ City ID?12345
 sorry, the city was not found
 free list. items = 21
 ```
+
+City Name?新上五島町
+the city was found at 20
+42411, 長崎県, 新上五島町, 19718, 9197, 10521
 
 ## 修正履歴
 

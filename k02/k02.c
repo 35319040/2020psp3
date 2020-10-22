@@ -20,7 +20,7 @@ typedef struct node_data {
 
 #define DEBUG
 //#define CHALLENGE1
-//#define CHALLENGE2
+#define CHALLENGE2
 
 #define SUCCESS 1
 #define ERROR   0
@@ -88,7 +88,10 @@ Node* InsertNewNode(City newCity, Node* pNext)
 #ifdef CHALLENGE1
 int DeleteNodeAt(Node** ppNode, int cn)
 {
-    //  チャレンジ問題1
+
+    while(ppNode != NULL){
+        
+        if(ppNode->//  チャレンジ問題1
     //  ここを実装する
 
 }
@@ -97,9 +100,17 @@ int DeleteNodeAt(Node** ppNode, int cn)
 #ifdef CHALLENGE2
 int SearchCityByName(Node* pList, char* cityName, City* pCity)
 {
-    //  チャレンジ問題2
-    //  ここを実装する
-
+    int count=-1;//  チャレンジ問題2
+                //  ここを実装する
+    while(pList != NULL){
+        count=count+1;
+        if((pList->city.name) == cityName){
+            *pCity=pList->city;
+            break;
+        }
+        pList=pList->pNext;
+    }
+    return count;
 }
 #endif
 
@@ -171,7 +182,7 @@ int main(void){
         printf("sorry, the city was not found\n");
     }
 
-#ifdef CHALLENGE1
+#ifdef CHALLENGE2
     //  市町村名で特定の市町村を探す
     char name[32];
     printf("City Name?");
@@ -185,7 +196,7 @@ int main(void){
     }
 #endif
 
-#ifdef CHALLENGE2
+#ifdef CHALLENGE1
     // 特定の場所のノードを削除する
     // cnは直前の検索結果
     DeleteNodeAt(&pTop, cn);
