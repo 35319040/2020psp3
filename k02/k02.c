@@ -19,7 +19,7 @@ typedef struct node_data {
 } Node;
 
 #define DEBUG
-//#define CHALLENGE1
+#define CHALLENGE1
 #define CHALLENGE2
 
 #define SUCCESS 1
@@ -89,8 +89,8 @@ Node* InsertNewNode(City newCity, Node* pNext)
 int DeleteNodeAt(Node** ppNode, int cn)
 {
 
-    while(ppNode != NULL){
-        
+    for(cn=0;cn<)
+
         if(ppNode->//  チャレンジ問題1
     //  ここを実装する
 
