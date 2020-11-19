@@ -56,6 +56,7 @@ char* BMSearch(char text[], char key[])
     int key_len=0;
     int i; 
     char table[256];   //  ここを実装する
+    int new_index;
 
     for(i=0;text[i]!=NULL;i++){
         text_len=text_len+1;  //textの長さを調べる
@@ -85,19 +86,26 @@ char* BMSearch(char text[], char key[])
             if(text[index+key_index]==key[key_index]){
                 if(key_index==0){
                     return text+index;  //見つかった場合
-                }else{
-                    break;  //for文からぬけだす
                 }
+            }else{
+                    break;
             }
         }
-        index=index+table[text[index+key_index]];
-        printf("index=%d\n",index);
-        printf("text=%d\n",table[text[index+key_index]]);
-    }
 
+        new_index=index+key_index+table[text[index+key_index]]-key_len+1;
+        
+        if(new_index<=index){
+            index++;
+        }else{
+            index=new_index;
+        }
 
-
+    }    
+    
 }
+
+
+
 
 
 
