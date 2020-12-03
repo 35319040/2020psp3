@@ -78,26 +78,23 @@ int LoadData(City arrayCity[])
 
 void BubbleSort(City arrayCity[], int size)
 {
-    int cnt=0;  //  ここを実装する
+    int cnt;  //  ここを実装する
     int pos;
     int tmp;
 
-    for(pos=0;pos<size-1;pos++){
+    while(cnt>0){
+        cnt=0;
+            for(pos=0;pos<size-1;pos++){
 
-        if(arrayCity->total[pos]>arrayCity->total[pos+1]){
+                if(arrayCity[pos].total>arrayCity[pos+1].total){
 
-            tmp=arrayCity->total[pos];
-            arrayCity->total[pos]=arrayCity->total[pos+1];
-            arrayCity->total[pos+1]=tmp;
+                    tmp=arrayCity[pos].total;
+                    arrayCity[pos].total=arrayCity[pos+1].total;
+                    arrayCity[pos+1].total=tmp;
 
-            cnt++;
-        }
-    }
-
-    if(cnt=0){
-        return arrayCity;
-    }else{
-        BubbleSort(arrayCity->total,size);
+                    cnt++;
+                }
+            }
     }
 
 }
@@ -107,31 +104,31 @@ void QuickSort(City arrayCity[], int left, int right)
 {                         
     int i=left; 
     int j=right;
-    int pivot=arrayCity->seafood[left];
-    int x;
+    int pivot=arrayCity[left].seafood;
+    City x;
     
-    if(>1){
+    if(>1){    //要素数の数え方がわかりません。
 
         while(1){
-            while(i>pivot){
+            while(arrayCity[i].seafood>pivot && right+1>arrayCity[i].seafood){
                 i++;
             }
 
-            while(j<=pivot){
+            while(arrayCity[j].seafood<=pivot){
                 j--;
             }
 
             if(i>=j){
                 break;
             }else{
-                x=i;
-                i=j;
-                j=x;
+                x=arrayCity[i];
+                arrayCity[i]=arrayCity[j];
+                arrayCity[j]=x;
             }
         }
-        x=arrayCity->seafood[left];
-        arrayCity->seafood[left]=arrayCity->seafood[j];
-        arrayCity->seafood[j]=x;
+        x=arrayCity[left];
+        arrayCity[left]=arrayCity[j];
+        arrayCity[j]=x;
 
         QuickSort(arrayCity->seafood, left, j-1);
         QuickSort(arrayCity->seafood, j+1, right);
