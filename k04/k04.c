@@ -78,14 +78,65 @@ int LoadData(City arrayCity[])
 
 void BubbleSort(City arrayCity[], int size)
 {
-    //  ここを実装する
+    int cnt=0;  //  ここを実装する
+    int pos;
+    int tmp;
+
+    for(pos=0;pos<size-1;pos++){
+
+        if(arrayCity->total[pos]>arrayCity->total[pos+1]){
+
+            tmp=arrayCity->total[pos];
+            arrayCity->total[pos]=arrayCity->total[pos+1];
+            arrayCity->total[pos+1]=tmp;
+
+            cnt++;
+        }
+    }
+
+    if(cnt=0){
+        return arrayCity;
+    }else{
+        BubbleSort(arrayCity->total,size);
+    }
 
 }
 
 
 void QuickSort(City arrayCity[], int left, int right)
-{
-    //  ここを実装する
+{                         
+    int i=left; 
+    int j=right;
+    int pivot=arrayCity->seafood[left];
+    int x;
+    
+    if(>1){
+
+        while(1){
+            while(i>pivot){
+                i++;
+            }
+
+            while(j<=pivot){
+                j--;
+            }
+
+            if(i>=j){
+                break;
+            }else{
+                x=i;
+                i=j;
+                j=x;
+            }
+        }
+        x=arrayCity->seafood[left];
+        arrayCity->seafood[left]=arrayCity->seafood[j];
+        arrayCity->seafood[j]=x;
+
+        QuickSort(arrayCity->seafood, left, j-1);
+        QuickSort(arrayCity->seafood, j+1, right);
+    }
+
 
 }
 
@@ -101,9 +152,32 @@ void HeapSort(City arrayCity[], int size)
 
 void MergeSort(City arrayCity[], int left, int right)
 {
-    //  チャレンジ問題2
-    //  ここを実装する
+    int mid;//  チャレンジ問題2
+    City left_buff[mid-left+1];
+    int i,j,k;   //  ここを実装する
 
+    if(left<right){
+        mid=left+(right-left)/2;
+        MergeSort(arrayCity,left,mid);
+        MergeSort(arrayCity,mid+1,right);
+
+        for(i=mid;i>=left;i--){
+            left_buff[i]=arrayCity[i];
+        }
+        for(j=mid+1;j<=right;j++){
+            left_buff[right-(j-(mid+1))]=arrayCity[j];
+        }
+        i=left;
+        j=right;
+        for(k=left;k<=right;k++){
+            if(left_buff[i]<left_buff[j]){
+                arrayCity[k]=left_buff[i++];
+            }else{
+                arrayCity[k]=left_buff[j--];
+            }
+
+        }
+    }
 }
 
 int main(void)
