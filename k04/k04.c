@@ -80,7 +80,7 @@ void BubbleSort(City arrayCity[], int size)
 {
     int cnt;  //  ここを実装する
     int pos;
-    int tmp;
+    City tmp;
 
     while(cnt>0){
         cnt=0;
@@ -88,9 +88,9 @@ void BubbleSort(City arrayCity[], int size)
 
                 if(arrayCity[pos].total>arrayCity[pos+1].total){
 
-                    tmp=arrayCity[pos].total;
-                    arrayCity[pos].total=arrayCity[pos+1].total;
-                    arrayCity[pos+1].total=tmp;
+                    tmp=arrayCity[pos];
+                    arrayCity[pos]=arrayCity[pos+1];
+                    arrayCity[pos+1]=tmp;
 
                     cnt++;
                 }
@@ -106,15 +106,16 @@ void QuickSort(City arrayCity[], int left, int right)
     int j=right;
     int pivot=arrayCity[left].seafood;
     City x;
-    
+
+
     if(right-left+1>1){    
 
         while(1){
-            while(arrayCity[i].seafood>pivot && right+1>pivot){
+            while(arrayCity[i].seafood<=pivot && right+1>i){
                 i++;
             }
 
-            while(arrayCity[j].seafood<=pivot){
+            while(arrayCity[j].seafood>pivot){
                 j--;
             }
 
@@ -130,8 +131,8 @@ void QuickSort(City arrayCity[], int left, int right)
         arrayCity[left]=arrayCity[j];
         arrayCity[j]=x;
 
-        QuickSort(arrayCity[], left, j-1);
-        QuickSort(arrayCity[], j+1, right);
+        QuickSort(arrayCity, left, j-1);
+        QuickSort(arrayCity, j+1, right);
     }
 
 
@@ -159,11 +160,9 @@ void MergeSort(City arrayCity[], int left, int right)
         MergeSort(arrayCity,mid+1,right);
 
         for(i=mid;i>=left;i--){
-            left_buff[i]=arrayCity[i];
+            left_buff[i]=arrayCity[i]; //left_buffにコピーしている
         }
-        for(j=mid+1;j<=right;j++){
-            left_buff[right-(j-(mid+1))]=arrayCity[j];
-        }
+        
         i=left;
         j=right;
         for(k=left;k<=right;k++){
@@ -201,7 +200,7 @@ int main(void)
    
 //    MergeSort(arrayCity, 0, MAX_CITY - 1);
 //    HeapSort(arrayCity, MAX_CITY);
-    PrintArray(arrayCity, MAX_CITY);
+//    PrintArray(arrayCity, MAX_CITY);
 
 
 
