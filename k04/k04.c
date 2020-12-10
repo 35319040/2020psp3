@@ -150,28 +150,32 @@ void HeapSort(City arrayCity[], int size)
 
 void MergeSort(City arrayCity[], int left, int right)
 {
-    int mid;//  チャレンジ問題2
+    int mid;
     City left_buff[mid-left+1];
-    int i,j,k;   //  ここを実装する
+    int i,j,k;   
 
-    if(left<right){
-        mid=left+(right-left)/2;
-        MergeSort(arrayCity,left,mid);
-        MergeSort(arrayCity,mid+1,right);
+    if(right-left>0){
+        if(left<right){
+            mid=left+(right-left)/2;
+            MergeSort(arrayCity,left,mid);
+            MergeSort(arrayCity,mid+1,right);
 
-        for(i=mid;i>=left;i--){
-            left_buff[i]=arrayCity[i]; //left_buffにコピーしている
-        }
-        
-        i=left;
-        j=right;
-        for(k=left;k<=right;k++){
-            if(left_buff[i].liquor<left_buff[j].liquor){
-                arrayCity[k]=left_buff[i++];
-            }else{
-                arrayCity[k]=left_buff[j--];
+            for(i=mid;i>=left;i++){
+                left_buff[i]=arrayCity[i]; //left_buffにコピーしている
             }
+        
+            i=left;
+            j=mid+1;
+            for(k=left;k<=right;k++){
+                if(left_buff[i].liquor<arrayCity[j].liquor){
+                    arrayCity[k]=arrayCity[j];
+                    j++;
+                }else{
+                    arrayCity[k]=left_buff[i];
+                    i++;
+                }
 
+            }
         }
     }
 }
@@ -189,16 +193,16 @@ int main(void)
     }
 
     //  食料品合計で並び替え
-    printf("===== Sorted by total =====\n");
-    BubbleSort(arrayCity, MAX_CITY);
-    PrintArray(arrayCity, MAX_CITY);
+    //printf("===== Sorted by total =====\n");
+    //BubbleSort(arrayCity, MAX_CITY);
+    //PrintArray(arrayCity, MAX_CITY);
 
     //  魚介類で並び替え   
-    printf("===== Sorted by seafood =====\n");
-    QuickSort(arrayCity, 0, MAX_CITY - 1);
-    PrintArray(arrayCity, MAX_CITY);
+    //printf("===== Sorted by seafood =====\n");
+    //QuickSort(arrayCity, 0, MAX_CITY - 1);
+    //PrintArray(arrayCity, MAX_CITY);
    
-//    MergeSort(arrayCity, 0, MAX_CITY - 1);
+    MergeSort(arrayCity, 0, MAX_CITY - 1);
 //    HeapSort(arrayCity, MAX_CITY);
 //    PrintArray(arrayCity, MAX_CITY);
 
