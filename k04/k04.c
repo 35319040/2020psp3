@@ -107,10 +107,10 @@ void QuickSort(City arrayCity[], int left, int right)
     int pivot=arrayCity[left].seafood;
     City x;
     
-    if(>1){    //要素数の数え方がわかりません。
+    if(right-left+1>1){    
 
         while(1){
-            while(arrayCity[i].seafood>pivot && right+1>arrayCity[i].seafood){
+            while(arrayCity[i].seafood>pivot && right+1>pivot){
                 i++;
             }
 
@@ -130,8 +130,8 @@ void QuickSort(City arrayCity[], int left, int right)
         arrayCity[left]=arrayCity[j];
         arrayCity[j]=x;
 
-        QuickSort(arrayCity->seafood, left, j-1);
-        QuickSort(arrayCity->seafood, j+1, right);
+        QuickSort(arrayCity[], left, j-1);
+        QuickSort(arrayCity[], j+1, right);
     }
 
 
@@ -167,7 +167,7 @@ void MergeSort(City arrayCity[], int left, int right)
         i=left;
         j=right;
         for(k=left;k<=right;k++){
-            if(left_buff[i]<left_buff[j]){
+            if(left_buff[i].liquor<left_buff[j].liquor){
                 arrayCity[k]=left_buff[i++];
             }else{
                 arrayCity[k]=left_buff[j--];
