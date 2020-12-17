@@ -78,12 +78,14 @@ int LoadData(City arrayCity[])
 
 void BubbleSort(City arrayCity[], int size)
 {
-    int cnt;  //  ここを実装する
+    int cnt=1; //  ここを実装する
     int pos;
     City tmp;
 
     while(cnt>0){
+
         cnt=0;
+        
             for(pos=0;pos<size-1;pos++){
 
                 if(arrayCity[pos].total>arrayCity[pos+1].total){
@@ -150,34 +152,47 @@ void HeapSort(City arrayCity[], int size)
 
 void MergeSort(City arrayCity[], int left, int right)
 {
-    int mid;
+    int mid=left+(right-left)/2;
     City left_buff[mid-left+1];
-    int i,j,k;   
+    int i,j,k,l;   
 
     if(right-left>0){
-        if(left<right){
-            mid=left+(right-left)/2;
+
             MergeSort(arrayCity,left,mid);
             MergeSort(arrayCity,mid+1,right);
 
-            for(i=mid;i>=left;i++){
-                left_buff[i]=arrayCity[i]; //left_buffにコピーしている
+            j=0;
+            for(i=left;i<mid+1;i++){
+                left_buff[j]=arrayCity[i]; //left_buffにコピーしている
+                j++;
             }
-        
+       
             i=left;
             j=mid+1;
+            l=0;
             for(k=left;k<=right;k++){
-                if(left_buff[i].liquor<arrayCity[j].liquor){
-                    arrayCity[k]=arrayCity[j];
-                    j++;
+                if(i<mid+1 && j<right+1){
+                    if(left_buff[l].liquor<arrayCity[j].liquor){
+                        arrayCity[k]=left_buff[l];
+                        i++;
+                        l++;
+                    }else{
+                        arrayCity[k]=arrayCity[j];
+                        j++;
+                    }
                 }else{
-                    arrayCity[k]=left_buff[i];
-                    i++;
+                    break;
                 }
 
+            } 
+
+            for( ;i<mid+1;i++){
+                arrayCity[k]=left_buff[l];
+                k++;
+                l++;
             }
-        }
     }
+
 }
 
 int main(void)
@@ -193,18 +208,19 @@ int main(void)
     }
 
     //  食料品合計で並び替え
-    //printf("===== Sorted by total =====\n");
-    //BubbleSort(arrayCity, MAX_CITY);
-    //PrintArray(arrayCity, MAX_CITY);
+    printf("===== Sorted by total =====\n");
+    BubbleSort(arrayCity, MAX_CITY);
+    PrintArray(arrayCity, MAX_CITY);
 
     //  魚介類で並び替え   
-    //printf("===== Sorted by seafood =====\n");
-    //QuickSort(arrayCity, 0, MAX_CITY - 1);
-    //PrintArray(arrayCity, MAX_CITY);
+    printf("===== Sorted by seafood =====\n");
+    QuickSort(arrayCity, 0, MAX_CITY - 1);
+    PrintArray(arrayCity, MAX_CITY);
    
+    printf("==== Merged by liquor ====\n");
     MergeSort(arrayCity, 0, MAX_CITY - 1);
 //    HeapSort(arrayCity, MAX_CITY);
-//    PrintArray(arrayCity, MAX_CITY);
+    PrintArray(arrayCity, MAX_CITY);
 
 
 
