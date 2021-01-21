@@ -97,12 +97,44 @@ int AdjacencyMatrix[MAX_STATIONS][MAX_STATIONS] = {
 - 幅優先探索のルート表示(10点)
 
 ## ソースコードの説明
+深さ優先
+visitedを初期化
+出発点をスタックに入れる
+★スタックが空かチェックする。空なら終了
+スタックから一つ取り出しし、行ったことあるかチェックする
+行ったことがないところであれば、その場所に行ったことにし、その場所からい☆ける場所をスタックに入れる。
+★～☆までを繰り返す。
 
-
+幅優先
+visitedを初期化
+出発点をキューにいれる
+★キューが空かチェックする。空なら終了
+キューから一つ取り出しし、行ったことがあるところかチェックする
+行ったことがないところであれば、その場所を行ったことにし、その場☆所からいける場所をスタックに入れる
+★～☆までを繰り返す
 
 ## 出力結果
 
 ```
+DepthFirstSearch
+0 is visited
+1 is visited
+2 is visited
+3 is visited
+4 is visited
+5 is visited
+6 is visited
+7 is visited
+BreadthFirstSearch
+0 is visited
+1 is visited
+2 is visited
+3 is visited
+4 is visited
+5 is visited
+6 is visited
+7 is visited
+Time Required: 7
 
 ```
 
