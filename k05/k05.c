@@ -107,7 +107,50 @@ void DepthFirstSearch(int size, int matrix[size][size], int start)
 {
     //  ここを実装する
 
+    int visited[size];
+    int i;
+    int index;
+
+    for(i=0;i<MAX_STATIONS;i++){
+
+        visited[i]=UNVISITED;　　//visitedの初期化
+    }
+
+    StackInit();
+    StackPush(start);           //出発点をスタックにいれる。
+
+    while(StackIsEmpty()==FALSE){
+
+        index=StackPop();       //スタックが空かチェック
+
+        if(visited[index]==UNVISITED){
+
+            visited[index]=VISITED;     //その場所に行ったことにする
+
+            for(i=0;i<MAX_STATIONS;i++){
+
+                if(matrix[index][i]!=UNVISITED){  //その場所からいける場所をスタックに入れる
+
+                    StackPush(i);
+
+                }
+            }
+        }
+    }
+
+    printf("DepthFirstSearch\n");
+
+    for(i=0;i<MAX_STATIONS;i++){
+
+        if(visited[i]==VISITED){
+
+            printf("%d is visited\n",i);
+        }
+    }
+
 }
+
+
 
 
 
@@ -173,6 +216,47 @@ void BreadthFirstSearch(int size, int matrix[size][size], int start)
 {
     //  ここを実装する
 
+    int visited[size];
+    int i;
+    int index;
+
+    for (i=0;i<MAX_STATIONS;i++){
+
+        visited[i]=UNVISITED;       //visitedを初期化
+    }
+
+    InitQueue;
+    EnQueue(start);                 //出発点をキューにいれる
+
+
+    while(QueueIsEmpty() == FALSE){
+
+        index=DeQueue();
+
+        if(visited[index]==UNVISITED){
+
+            visited[index]=VISITED;     //その場所を行ったことにする
+            
+            for(i=0;i<MAX_STATIONS;i++){
+
+                if(matrix[index][i]!=UNVISITED){    //その場所から行ける場所をスタックにいれる
+
+                    EnQueue(i);
+                }
+            }
+        }        
+        
+    }
+
+    printf("BreadthFirstSearch\n");
+
+    for(i=0;i<MAX_STATIONS;i++){
+
+        if(visited[i]==VISITED){
+
+            printf("%d is visited\n",i);
+        }
+    }
 }
 
 
@@ -181,9 +265,7 @@ void BreadthFirstSearch(int size, int matrix[size][size], int start)
 int SearchGraphByDijkstra(int start, int goal, int size, int matrix[size][size])
 {
     //  ここを実装する
-
 }
-
 
 
 int main(void)

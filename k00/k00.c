@@ -1,17 +1,28 @@
 #include <stdio.h>
- 
-int factorial(int n){
+#include <math.h>
 
-    int val;
-    printf("call n=%d\n",n);
-    if(n==1){
-        return 1;
-    }
-    val=n*factorial(n-1);
-    printf("return value=%d\n",val);
-    return val;
+double f (double x)
+{
+    return (x*x-2);
 }
+ 
+int main()
+{
+    double x, xn, fd, h;
+    x=2.0;
+    h=0.0001;
 
-int main(void){
-    printf("10!=%d\n",factorial(10));
+    while(1){
+        printf("x=%lf\n",x);
+        fd=(f(x+h)-f(x))/h;
+        xn=x-f(x)/fd;
+        if(fabs(xn-x)<0.00001){
+            break;
+        }else{
+            x=xn;
+        }
+
+    }
+    printf("answer=%lf\n",xn);
+    return 0;
 }
