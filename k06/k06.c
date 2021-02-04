@@ -90,7 +90,7 @@ void DynamicProgLimited(Menu arrayItem[], int items, int nap_size)
         for(j=arrayItem[i-1].price;j<=nap_size;j++){
             if(nap_value[i-1][j]>nap_value[i-1][j-arrayItem[i-1].price]+arrayItem[i-1].calorie){
 
-                nap_value[i][j]=nap_value[i-1][j-arrayItem[i-1].price]+arrayItem[i-1].calorie;  //入れ替えないほうが大きいとき
+                nap_value[i][j]=nap_value[i-1][k];                                              //入れ替えないほうが大きいとき
 
             }else{
                 nap_value[i][j]=nap_value[i-1][j-arrayItem[i-1].price]+arrayItem[i-1].calorie;  //入れ替えたほうが大きいとき
