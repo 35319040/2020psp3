@@ -73,9 +73,35 @@ void DynamicProgLimited(Menu arrayItem[], int items, int nap_size)
 
     //　ここを実装する
 
+    int i,j,k;
 
+    for(i=0;i<=items;i++){
+        for(j=0;j<=nap_size;j++){
+           nap_value[i][j]=0;               //表の初期化
+        }
+    }
+
+    for(i=1;i<=items;i++){
+        for(k=1;k<arrayItem[i-1].price;k++){
+
+            nap_value[i][k]=nap_value[i-1][k];  //上の状態をいれてる
+
+        }
+        for(j=arrayItem[i-1].price;j<=nap_size;j++){
+            if(nap_value[i-1][j]>nap_value[i-1][j-arrayItem[i-1].price]+arrayItem[i-1].calorie){
+
+                nap_value[i][j]=nap_value[i-1][j];                                              //入れ替えないほうが大きいとき
+
+            }else{
+                nap_value[i][j]=nap_value[i-1][j-arrayItem[i-1].price]+arrayItem[i-1].calorie;  //入れ替えたほうが大きいとき
+
+            }
+        }
+
+    }
+
+    printf("最大カロリー : %d\n",nap_value[items][nap_size]);
 }
-
 
 int main(void)
 {
